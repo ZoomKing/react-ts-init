@@ -6,9 +6,7 @@ interface IProps {
 
 class Topics extends React.Component<IProps> {
     public render(){
-        console.log(this.props);
         const {match} =  this.props;
-        console.log(match);
         return(
             <div>
                 <h2>Topics</h2>

@@ -8,6 +8,9 @@ interface IProps {
 
 class Home extends React.Component<IProps> {
 
+    componentDidMount() {
+        console.log('home componentDidMount')
+    }
 
     async getAds() {
         console.log('getAds');

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 
-console.log(process.env);
 // if (process.env.NODE_ENV === "product" && process.env.VUE_APP_CURRENTMODE === 'daily') {
     // axios.defaults.baseURL = 'https://daily.pinkumall.com/';
 // } else if (process.env.NODE_ENV === 'product' ) {
