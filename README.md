@@ -3,15 +3,26 @@
 
 ## To start a new Create React App project with TypeScript,
 
-In the project directory, you can run: yarn create react-app my-app --typescript
+In the project directory;
+```
+you can run: yarn create react-app my-app --typescript
+
+```
 
 ###  `To add TypeScript to a Create React App project, first install it:`
 
+```
 yarn add typescript @types/node @types/react @types/react-dom @types/jest
+
+```
 
 ## To add React Router 
 
-you can run : yarn add react-router-dom @types/react-router-dom
+you can run :
+```
+ yarn add react-router-dom @types/react-router-dom
+
+```
 
 first: you should create router directory in the src directory;
 create RouterMap.tsx in the router directory;
@@ -64,8 +75,11 @@ export default RouterMap;
 
 ## To add px2rem 
 
-you can run : yarn add postcss-px2rem
+you can run : 
+```
+yarn add postcss-px2rem
 
+```
 and in webpack.config.js file:
 
 ```
@@ -90,7 +104,11 @@ plugins: () => [
 
 ## To add sass 
 
-you can run : yarn add node-sass;
+you can run : 
+```
+yarn add node-sass;
+
+```
 
 Now you can rename src/App.css to src/App.scss and update src/App.js to import src/App.scss;
 This file and any other file will be automatically compiled if imported with the extension .scss or .sass
