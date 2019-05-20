@@ -1,44 +1,86 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## https://facebook.github.io/create-react-app/docs
 
-In the project directory, you can run:
+## To start a new Create React App project with TypeScript,
 
-### `npm start`
+In the project directory, you can run: yarn create react-app my-app --typescript
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+###  `To add TypeScript to a Create React App project, first install it:`
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+yarn add typescript @types/node @types/react @types/react-dom @types/jest
 
-### `npm test`
+## To add React Router 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+you can run : yarn add react-router-dom @types/react-router-dom
 
-### `npm run build`
+first: you should create router directory in the src directory;
+create RouterMap.tsx in the router directory;
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+## To add px2rem 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+you can run : yarn add postcss-px2rem
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+and in webpack.config.js file:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+const px2rem = require('postcss-px2rem');
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+plugins: () => [
+    require('postcss-flexbugs-fixes'),
+    autoprefixer({
+    browsers: [
+        '>1%',
+        'last 4 versions',
+        'Firefox ESR',
+        'not ie < 9', // React doesn't support IE8 anyway
+    ],
+    flexbox: 'no-2009',
+    }),
+    //这个位置
+    px2rem({remUnit: 75})
+],
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## To add sass 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+you can run : yarn add node-sass;
+
+Now you can rename src/App.css to src/App.scss and update src/App.js to import src/App.scss;
+This file and any other file will be automatically compiled if imported with the extension .scss or .sass
+
+## To add Post-Processing CSS
+
+CSS Grid Layout prefixing is disabled by default;
+To enable CSS Grid prefixing, add /* autoprefixer grid: autoplace */ to the top of your CSS file.
+
+note: in webpack.config.js file: you should add something...
+```
+autoprefixer: {
+    browsers: [
+        '>1%',
+        'last 4 versions',
+        'Firefox ESR',
+        'not ie < 9', // React doesn't support IE8 anyway
+    ],
+    flexbox: 'no-2009',
+},
+
+```
+
+## 
+
+
+
+
+
+
+
+
+
+

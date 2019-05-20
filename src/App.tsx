@@ -1,13 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import './App.scss';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        sayr
-      </header>
+        <div className="hello">hello</div>
     </div>
   );
 }

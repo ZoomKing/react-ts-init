@@ -1,0 +1,19 @@
+/* autoprefixer grid: autoplace */
+$baseColor: red;
+.App {
+  text-align: center;
+}
+.hello {
+   display: flex;
+   width: 300px;
+   color: $baseColor;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
