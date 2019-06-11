@@ -3,11 +3,7 @@ import { BrowserRouter as Router , Link} from "react-router-dom";
 import RouterMap from './router/RouterMap';
 import './App.scss';
 
-
 export default class BasicExample extends React.Component {
-  constructor(props: any) {
-    super(props);
-  }
   render() {
     return (
       <Router >

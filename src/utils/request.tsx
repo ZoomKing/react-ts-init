@@ -1,5 +1,13 @@
 import axios from 'axios';
 
+export interface APIParams {
+
+}
+export  interface ResultParam {
+    succ : boolean;
+    errorCode: null | number;
+}
+type APIMethod = "post" | "get" | 'delete' | 'put';
 
 // if (process.env.NODE_ENV === "product" && process.env.VUE_APP_CURRENTMODE === 'daily') {
     // axios.defaults.baseURL = 'https://daily.pinkumall.com/';
@@ -30,6 +38,7 @@ class Check {
         // 如果http状态码正常，则直接返回数据
         if (response && (response.status === 200 || response.status === 304 || response.status === 400)) {
             if (response.data.succ) {
+                console.log(response.data)
                 return response.data;
             } else {
                 return response.data;
@@ -58,10 +67,12 @@ class Axios {
     constructor() {
         this._Check = new Check();
     }
-    public get(url: string, params: any = null) {
+    public request(method: APIMethod, url: string, params: any = null) {
+        const options = method==='get' ? {params} : {data:params}
         return axios({
+            method,
             url,
-            params,
+            ...options,
         }).then(
             (response: any) => {
                 return this._Check._checkStatus(response);
@@ -72,25 +83,7 @@ class Axios {
             }
         );
     }
-    public post(url: string, data: any = null) {
-        return axios({
-            method: 'post',
-            url,
-            data,
-            //   headers: {
-            //     'X-Requested-With': 'XMLHttpRequest',
-            //     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            //   }
-        }).then(
-            (response) => {
-                return this._Check._checkStatus(response);
-            },
-        ).then(
-            (error) => {
-                return this._Check._checkCode(error);
-            },
-        );
-    }
 }
-
-export default new Axios();
+export default function generalRequestAPI<InputParams extends APIParams, OutParams extends ResultParam>(method: APIMethod, url: string, params ?: InputParams): (params: InputParams)=> Promise<OutParams>{
+    return (params: InputParams)=> new Axios().request(method,url,params) 
+}

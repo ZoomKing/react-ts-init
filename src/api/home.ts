@@ -1,12 +1,22 @@
-import Axios from '../utils/request';
+import generalRequestAPI, { ResultParam} from '../utils/request';
 
-interface GetHomeData {
+
+interface GetHomeDataParams {
     positionId: number ;
     pageSize: number ;
     currentPage: number ;
 }
-
-
+interface Item {
+    data: string;
+    templateId: number;
+}
+interface OutParams extends ResultParam{
+    value: {
+        pageCount: number;
+        totalCount: number;
+        values: Item[]
+    }
+}
 export default {
-    getHomeData: (obj: GetHomeData)=>Axios.get('/h5/ads/query',obj)
+    getHomeData: generalRequestAPI<GetHomeDataParams, OutParams>('get','/h5/ads/query')
 }

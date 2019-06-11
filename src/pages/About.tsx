@@ -21,27 +21,23 @@ class About extends React.Component<IProps> {
         this.setName = this.setName.bind(this);
     }
     public setName () {
-        // this.props.onChange({
-        //     age: 22,
-        //     name: 'xingyao',
-        // })
         this.getAds();
     }
     public async getAds() {
-        console.log('getAds');
+
         const response = await api.home.getHomeData({
             positionId: 6,
             pageSize: 100,
             currentPage: 1
         })
-        console.log(response.value.totalCount);
+        console.log(response.value.values[0])
         this.props.onChange({
             age: response.value.totalCount,
             name: 'xingyao',
         })
-        console.log(this.props);
     }
     componentWillMount() {
+        this.setName();
     }
     public render() {
         const { userInfo } = this.props;
