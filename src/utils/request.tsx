@@ -84,6 +84,6 @@ class Axios {
         );
     }
 }
-export default function generalRequestAPI<InputParams extends APIParams, OutParams extends ResultParam>(method: APIMethod, url: string, params ?: InputParams): (params: InputParams)=> Promise<OutParams>{
+export default function generalRequestAPI<InputParams extends APIParams, OutParams extends ResultParam>(method: APIMethod, url: string): (params: InputParams)=> Promise<OutParams>{
     return (params: InputParams)=> new Axios().request(method,url,params) 
 }
