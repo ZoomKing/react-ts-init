@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import SetUserInfo  from '../actions/userInfo'
 import { IUserInfo } from '../reducers/setUserInfo';
 import api from '../api';
+// import Button from 'antd/lib/button';
+import { Button } from 'antd';
 
 interface IComponentStateProps  {
     userInfo: IUserInfo;
@@ -47,6 +49,8 @@ class About extends React.Component<IProps> {
                 <p>{ userInfo.name }</p>
                 <p>{ userInfo.age }</p>
                 <div onClick={this.setName}>set Name</div>
+
+                <Button type="primary">Button</Button>
             </div>
         ) 
     }
