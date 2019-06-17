@@ -19,5 +19,5 @@ interface OutParams extends ResultParam{
 }
 export default {
     getHomeData: generalRequestAPI<GetHomeDataParams, OutParams>('get','/h5/ads/query'),
-    getUser: generalRequestAPI<APIParams, OutParams>('get','/users')
+    getUser: generalRequestAPI<APIParams, OutParams>('get','/h5/ads/query')
 }
