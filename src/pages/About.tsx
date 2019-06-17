@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import SetUserInfo  from '../actions/userInfo'
 import { IUserInfo } from '../reducers/setUserInfo';
 import api from '../api';
-// import Button from 'antd/lib/button';
 import { Button } from 'antd';
 
 interface IComponentStateProps  {
@@ -40,7 +39,9 @@ class About extends React.Component<IProps> {
     }
     async componentWillMount() {
         // this.setName();
-        const response = await api.home.getUser({});
+        const response = await api.home.getUser({
+            id: 1231
+        });
         console.log(response)
 
     }

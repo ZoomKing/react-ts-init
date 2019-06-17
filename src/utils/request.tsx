@@ -1,5 +1,5 @@
-import axios from 'axios';
-
+import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from 'axios';
+import mockAPI from '../mock'
 export interface APIParams {
 
 }
@@ -7,6 +7,7 @@ export  interface ResultParam {
     succ : boolean;
     errorCode: null | number;
 }
+
 type APIMethod = "post" | "get" | 'delete' | 'put';
 
 // if (process.env.NODE_ENV === "product" && process.env.VUE_APP_CURRENTMODE === 'daily') {
@@ -16,8 +17,10 @@ type APIMethod = "post" | "get" | 'delete' | 'put';
 // }
 
 // 添加请求拦截器
-axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(function (config: AxiosRequestConfig) {
     // 在发送请求之前做些什么
+    console.log(config);
+    
     return config;
   }, function (error) {
     // 对请求错误做些什么
@@ -34,7 +37,7 @@ axios.interceptors.response.use(function (response) {
 });
 
 class Check {
-    public _checkStatus(response: any) {
+    public _checkStatus(response: AxiosResponse) {
         // 如果http状态码正常，则直接返回数据
         if (response && (response.status === 200 || response.status === 304 || response.status === 400)) {
             if (response.data.succ) {
@@ -49,13 +52,14 @@ class Check {
             msg: '异常'
         };
     }
-    public _checkCode(error: any) {
+    public _checkCode(error: AxiosError) {
+        
+        const errRes = error.response as AxiosResponse
         // 如果code异常(这里已经包括网络错误，服务器错误，后端抛出的错误)，可以弹出一个错误提示，告诉用户
-        if (error.status === -404) {
-            alert(error.msg);
-        }
-        if (error.data && (!error.data.success)) {
-            alert(error.data.error_msg);
+        if (errRes.status === 404) {
+            console.log('Not Found');
+        } else if (errRes.data && (!errRes.data.success)) {
+            alert(errRes.data.message);
         }
         return error;
     }
@@ -73,11 +77,11 @@ class Axios {
             url,
             ...options,
         }).then(
-            (response: any) => {
+            (response: AxiosResponse) => {
                 return this._Check._checkStatus(response);
             }
         ).catch(
-            (error: any) => {
+            (error: AxiosError) => {
                 return this._Check._checkCode(error);
             }
         );

@@ -17,7 +17,10 @@ interface OutParams extends ResultParam{
         values: Item[]
     }
 }
+interface GerUserInfoParams {
+    id: number;
+}
 export default {
     getHomeData: generalRequestAPI<GetHomeDataParams, OutParams>('get','/h5/ads/query'),
-    getUser: generalRequestAPI<APIParams, OutParams>('get','/h5/ads/query')
+    getUser: generalRequestAPI<GerUserInfoParams, ResultParam>('get','/userInfo'),
 }
