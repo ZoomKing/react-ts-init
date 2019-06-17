@@ -6,6 +6,7 @@ import reducer from './reducers'
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import './mock';
 const store = createStore(reducer);
 
 ReactDOM.render(

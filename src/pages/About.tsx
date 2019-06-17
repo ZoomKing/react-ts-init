@@ -32,14 +32,17 @@ class About extends React.Component<IProps> {
             pageSize: 100,
             currentPage: 1
         })
-        console.log(response.value.values[0])
+        console.log('pageCount',response.value.pageCount)
         this.props.onChange({
             age: response.value.totalCount,
             name: 'xingyao',
         })
     }
-    componentWillMount() {
-        this.setName();
+    async componentWillMount() {
+        // this.setName();
+        const response = await api.home.getUser({});
+        console.log(response)
+
     }
     public render() {
         const { userInfo } = this.props;

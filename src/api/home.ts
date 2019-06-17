@@ -1,4 +1,4 @@
-import generalRequestAPI, { ResultParam} from '../utils/request';
+import generalRequestAPI, { ResultParam, APIParams} from '../utils/request';
 
 
 interface GetHomeDataParams {
@@ -18,5 +18,6 @@ interface OutParams extends ResultParam{
     }
 }
 export default {
-    getHomeData: generalRequestAPI<GetHomeDataParams, OutParams>('get','/h5/ads/query')
+    getHomeData: generalRequestAPI<GetHomeDataParams, OutParams>('get','/h5/ads/query'),
+    getUser: generalRequestAPI<APIParams, OutParams>('get','/users')
 }
