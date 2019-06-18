@@ -6,6 +6,7 @@ import users from './users'
 var mock = new MockAdapter(axios);
 
 
+
 export default function mockApi(errConfig: AxiosRequestConfig) {
     if(errConfig.method === 'get'){
         switch(errConfig.url) {
