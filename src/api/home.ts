@@ -1,4 +1,4 @@
-import generalRequestAPI, { ResultParam, APIParams} from '../utils/request';
+import generalRequestAPI, { ResultParam,} from '../utils/request';
 
 
 interface GetHomeDataParams {
@@ -10,7 +10,7 @@ interface Item {
     data: string;
     templateId: number;
 }
-interface OutParams extends ResultParam{
+interface OutHomeDataParams extends ResultParam{
     value: {
         pageCount: number;
         totalCount: number;
@@ -21,6 +21,6 @@ interface GerUserInfoParams {
     id: number;
 }
 export default {
-    getHomeData: generalRequestAPI<GetHomeDataParams, OutParams>('get','/h5/ads/query'),
+    getHomeData: generalRequestAPI<GetHomeDataParams, OutHomeDataParams>('get','/h5/ads/query'),
     getUser: generalRequestAPI<GerUserInfoParams, ResultParam>('get','/userInfo'),
 }

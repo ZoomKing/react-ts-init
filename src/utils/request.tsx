@@ -1,5 +1,4 @@
-import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from 'axios';
-import mockAPI from '../mock'
+import axios, { AxiosError, AxiosResponse } from 'axios';
 export interface APIParams {
 
 }
@@ -17,7 +16,7 @@ type APIMethod = "post" | "get" | 'delete' | 'put';
 // }
 
 // 添加请求拦截器
-axios.interceptors.request.use(function (config: AxiosRequestConfig) {
+axios.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
     console.log(config);
     
@@ -53,7 +52,6 @@ class Check {
         };
     }
     public _checkCode(error: AxiosError) {
-        
         const errRes = error.response as AxiosResponse
         // 如果code异常(这里已经包括网络错误，服务器错误，后端抛出的错误)，可以弹出一个错误提示，告诉用户
         if (errRes.status === 404) {
@@ -65,7 +63,7 @@ class Check {
     }
 }
 
-class Axios {
+class AxiosApi {
     private _Check: any;
     constructor() {
         this._Check = new Check();
@@ -87,6 +85,22 @@ class Axios {
         );
     }
 }
+
+//generalRequestAPI 不用解释，只是一个函数名
+
+// <InputParams extends APIParams, OutParams extends ResultParam> 
+// 这个是泛型的写法，接受两个未知类型，一个 InputParams 一个  OutParams
+// InputParams 继承  APIParams； OutParams 继承 ResultParam
+
+// (method: APIMethod, url: string)
+// 简单的两个参数 和类型
+
+// : (params: InputParams)=> Promise<OutParams>
+// : 后面是 这个函数的返回类型 返回的是一个 函数，
+// 函数接受一个 参数，类型是 InputParams 函数 return 结果是 一个Promiseh函数，泛型是OutParams 这一点和 generalRequestAPI 一样
+
+// return (params: InputParams)=> new Axios().request(method,url,params) 
+// 这个就是 函数 generalRequestAPI 返回结果了 
 export default function generalRequestAPI<InputParams extends APIParams, OutParams extends ResultParam>(method: APIMethod, url: string): (params: InputParams)=> Promise<OutParams>{
-    return (params: InputParams)=> new Axios().request(method,url,params) 
+    return (params: InputParams)=> new AxiosApi().request(method,url,params) 
 }
