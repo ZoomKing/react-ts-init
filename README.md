@@ -24,7 +24,7 @@ you can run :
 first: you should create router directory in the src directory;
 create RouterMap.tsx in the router directory;
 like this:
-```
+```javascript
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import About from '../pages/About';
@@ -78,7 +78,7 @@ yarn add postcss-px2rem
 ```
 and in webpack.config.js file:
 
-```
+``` javascript
 const px2rem = require('postcss-px2rem');
 
 plugins: () => [
@@ -114,7 +114,7 @@ CSS Grid Layout prefixing is disabled by default;
 To enable CSS Grid prefixing, add /* autoprefixer grid: autoplace */ to the top of your CSS file.
 
 note: in webpack.config.js file: you should add something...
-```
+```javascript
 autoprefixer: {
     browsers: [
         '>1%',
