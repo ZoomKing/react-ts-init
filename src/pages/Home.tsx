@@ -1,36 +1,24 @@
-import * as React from "react";
-import HomeTop from './HomeComponent/HomeTop'
-import HomeTitle from './HomeComponent/HomeTitle'
+import  React, { useState } from "react";
+// import HomeTop from './HomeComponent/HomeTop'
+// import HomeTitle from './HomeComponent/HomeTitle'
 import styles from  './Home.module.scss';
-import '../utils/index';
 interface IProps {
-    name : string
+    name : string | string[]
 }
 
-class Home extends React.Component<IProps> {
+const Home: React.FC = ()=>{
+    const [name, setName ] = useState('sauron');
 
-    componentDidMount() {
-
+    const clickFun = ()=>{
+        setName('xingyao')
+        console.log(name)
     }
 
-    async getAds() {
-        
-    }
-
-    componentWillMount() {
-        
-    }
-    public render() {
-        return (
-            <div className='Home'>
-                <div className={styles.hello}>sauron</div>
-                <HomeTop>
-                    <HomeTitle />
-                </HomeTop>
-            </div>
-        )
-    }
-}
-
+    return (
+        <div className='Home'>
+            <div className={styles.hello} onClick={ clickFun }>{ name }</div>
+        </div>
+    )
+} 
 
 export default Home;

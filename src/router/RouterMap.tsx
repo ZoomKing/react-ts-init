@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import About from '../pages/About';
 import Home from '../pages/Home';
 import Topics from '../pages/Topics';
-
+import Demo from '../pages/demo';
 interface IRouterItem {
     component: any;
     path: string;
@@ -22,6 +22,10 @@ const RouterList : IRouterItem[] = [
         component: Topics,
         path: '/topics'
     },
+    {
+        component: Demo,
+        path: '/demo'
+    }
 ]
 
 const RouterMap = ()=> (

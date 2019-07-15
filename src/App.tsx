@@ -17,6 +17,9 @@ export default class BasicExample extends React.Component {
             <li>
               <Link to="/topics">Topics</Link>
             </li>
+            <li>
+              <Link to="/demo">Demo</Link>
+            </li>
           </ul>
   
           <hr />
